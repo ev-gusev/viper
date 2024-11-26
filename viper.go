@@ -321,6 +321,7 @@ func (v *Viper) WatchConfig() {
 	go func() {
 		watcher, err := fsnotify.NewWatcher()
 		if err != nil {
+			slog.With("error", err).Error("failed to create watcher")
 			v.logger.Error(fmt.Sprintf("failed to create watcher: %s", err))
 			os.Exit(1)
 		}
