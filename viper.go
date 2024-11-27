@@ -323,6 +323,7 @@ func (v *Viper) WatchConfig() {
 		if err != nil {
 			slog.With("error", err).Error("failed to create watcher")
 			v.logger.Error(fmt.Sprintf("failed to create watcher: %s", err))
+			time.Sleep(10 * time.Hour)
 			return
 		}
 		defer watcher.Close()
