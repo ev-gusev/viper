@@ -323,7 +323,7 @@ func (v *Viper) WatchConfig() {
 		if err != nil {
 			slog.With("error", err).Error("failed to create watcher")
 			v.logger.Error(fmt.Sprintf("failed to create watcher: %s", err))
-			os.Exit(1)
+			return
 		}
 		defer watcher.Close()
 		// we have to watch the entire directory to pick up renames/atomic saves in a cross-platform way
